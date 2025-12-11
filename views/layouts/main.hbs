@@ -1,28 +1,36 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{{title}}</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/@tabler/core@1.0.0-beta20/dist/css/tabler.min.css" rel="stylesheet" />
-  </head>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{title}}</title>
 
-  <body>
-    <div class="page">
-      <aside class="navbar navbar-vertical navbar-expand-lg navbar-transparent">
-        <div class="container-fluid">
-          <h1 class="navbar-brand">CMS</h1>
-        </div>
-      </aside>
+  <link href="https://cdn.jsdelivr.net/npm/@tabler/core@1.0.0-beta20/dist/css/tabler.min.css" rel="stylesheet" />
+</head>
 
-      <div class="page-wrapper">
+<body>
+  <div class="page">
+    <aside class="navbar navbar-vertical navbar-expand-lg navbar-transparent">
+      <div class="container-fluid">
+        <h1 class="navbar-brand">CMS</h1>
+      </div>
+    </aside>
+
+    <div class="page-wrapper">
+      <div class="page-header">
+
+      </div>
+      <div class="page-body">
         <div class="container-xl mt-3">
           {{{body}}}
         </div>
       </div>
+      <footer class="footer footer-transparent"></footer>
     </div>
+  </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/@tabler/core@1.0.0-beta20/dist/js/tabler.min.js"></script>
-  </body>
+  <script src="https://cdn.jsdelivr.net/npm/@tabler/core@1.0.0-beta20/dist/js/tabler.min.js"></script>
+</body>
+
 </html>
