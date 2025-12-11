@@ -1,4 +1,7 @@
-
+const User = require('../models/User');
+const jwt = require('jsonwebtoken');
+const nodemailer = require('nodemailer');
+const { isValidEmail } = require('../modules/checkValidForm');
 
 exports.renderLoginPage = async (req, res) => {
     try {
@@ -17,7 +20,7 @@ function generateMagicToken(email) {
 
 async function sendMagicLinkEmail(email, link) {
   const transporter = nodemailer.createTransport({
-    host: 'smtp.zoho.com',
+    host: 'smtp.zoho.eu',
     port: 465,
     secure: true,
     auth: {
@@ -27,7 +30,7 @@ async function sendMagicLinkEmail(email, link) {
   });
 
   await transporter.sendMail({
-    from: process.env.SMTP_USER,
+    from: `"iLearningHubb" <${process.env.EMAIL_USER}>`,
     to: email,
     subject: 'Your Magic Login Link',
     html: `<a href="${link}">Click here to sign in</a>`
@@ -58,6 +61,7 @@ exports.sendMagicLink = async (req, res) => {
         res.json({ success: true });
 
     } catch (error) {
+        console.log(error);
         res.status(500).json({
             error: 'An error occurred while sending magic link',
             details: error.message,
