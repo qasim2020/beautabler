@@ -192,9 +192,9 @@
               </svg>
             </a>
 
-            <div class="nav-item dropdown d-none d-md-flex me-3 notifications-container">
+            {{!-- <div class="nav-item dropdown d-none d-md-flex me-3 notifications-container">
               {{> notificationsDropdown}}
-            </div>
+            </div> --}}
           </div>
           <div class="nav-item dropdown">
             <a href="#" class="nav-link d-flex lh-1 text-reset pr-4" data-bs-toggle="dropdown"
@@ -532,7 +532,7 @@
       </div>
     </aside>
 
-    <div class="page-wrapper ml-collapsed-sidebar">
+    <div class="page-wrapper {{#if (eq sidebarCollapsed true)}} ml-collapsed-sidebar {{/if}}">
       {{{body}}}
       <footer class="footer footer-transparent d-print-none">
         <div class="container-xl">
