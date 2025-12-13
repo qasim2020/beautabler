@@ -97,7 +97,10 @@ exports.testMagicLink = async (req, res) => {
             res.redirect('/dashboard');
         });
     } catch (e) {
-        res.status(400).send('Invalid link, please request a new magic link.');
+        res.render('login', { 
+            layout: 'auth', 
+            note: 'Invalid / expired login link. Please create a new login link.' 
+        });
     }
 };
 

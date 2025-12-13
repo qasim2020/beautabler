@@ -2,7 +2,11 @@
     <div class="container container-tight py-4">
         <div class="card card-md">
             <div class="card-body">
+                {{#if note}}
+                <h2 class="h3 text-center mb-4">{{note}}</h2>
+                {{else}}
                 <h2 class="h2 text-center mb-4">Get a Magic Link in your Inbox</h2>
+                {{/if}}
                 <form autocomplete="off" novalidate="">
                     <div class="mb-3">
                         <label class="form-label">Email address</label>

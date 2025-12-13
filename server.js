@@ -6,6 +6,7 @@ const authRoutes = require("./routes/authRoutes")
 const homeRoutes = require("./routes/homeRoutes")
 const session = require('express-session');
 const MongoStore = require("connect-mongo");
+const path = require('path');
 
 dotenv.config()
 connectDB()
@@ -35,7 +36,9 @@ app.engine("hbs", exphbs.engine({ extname: ".hbs", defaultLayout: "main" }))
 app.set("view engine", "hbs")
 app.set("views", "./views")
 
+app.use('/tabler', express.static(path.join(__dirname, 'node_modules', '@tabler', 'core', 'dist')));
 app.use(express.static("public"))
+app.use('/robots.txt', express.static(path.join(__dirname, 'static/robots.txt')));
 
 app.use(authRoutes);
 app.use(homeRoutes);
