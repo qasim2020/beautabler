@@ -86,19 +86,26 @@ exports.testMagicLink = async (req, res) => {
     try {
         const token = req.query.token;
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
-
         let user = await User.findOne({ email: decoded.email });
-        
         if (!user) {
             res.status(404).send('User not found');
             return;
         };
-
         req.session.userId = user._id;
         req.session.email = user.email;
-
-        res.redirect('/dashboard');
+        req.session.save(() => {
+            res.redirect('/dashboard');
+        });
     } catch (e) {
-        res.status(400).send('Invalid or expired link');
+        res.status(400).send('Invalid link, please request a new magic link.');
     }
 };
+
+exports.logout = async (req, res) => {
+    try {
+        req.session.destroy();
+        res.redirect('/login');
+    } catch (error) {
+        res.status(400).send('Error logging out, please try again.');
+    }
+}
